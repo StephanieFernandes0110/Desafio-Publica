@@ -1,0 +1,100 @@
+package visao;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JTable;
+
+public class Formulario extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtPlacar;
+	private JTextField txtMinTemp;
+	private JTextField txtMinRecorde;
+	private JTextField txtMaxTemp;
+	private JTextField txtMaxRecorde;
+	private JTable table;
+	
+	/**
+	 * Create the frame.
+	 */
+	public Formulario() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 545, 449);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblPlacar = new JLabel("Placar");
+		lblPlacar.setBounds(120, 14, 46, 14);
+		contentPane.add(lblPlacar);
+		
+		txtPlacar = new JTextField();
+		txtPlacar.setBounds(165, 11, 65, 20);
+		contentPane.add(txtPlacar);
+		txtPlacar.setColumns(10);
+		
+		JLabel lblMinTemp = new JLabel("Minimo da temporada");
+		lblMinTemp.setBounds(33, 42, 132, 14);
+		contentPane.add(lblMinTemp);
+		
+		txtMinTemp = new JTextField();
+		txtMinTemp.setColumns(10);
+		txtMinTemp.setBounds(165, 39, 65, 20);
+		contentPane.add(txtMinTemp);
+		
+		JLabel lblMinRecorde = new JLabel("Quebra de recode minimo");
+		lblMinRecorde.setBounds(10, 70, 155, 14);
+		contentPane.add(lblMinRecorde);
+		
+		txtMinRecorde = new JTextField();
+		txtMinRecorde.setColumns(10);
+		txtMinRecorde.setBounds(165, 67, 65, 20);
+		contentPane.add(txtMinRecorde);
+		
+		JLabel lblMaxTemp = new JLabel("Maximo da temporada");
+		lblMaxTemp.setBounds(299, 45, 132, 14);
+		contentPane.add(lblMaxTemp);
+		
+		txtMaxTemp = new JTextField();
+		txtMaxTemp.setColumns(10);
+		txtMaxTemp.setBounds(432, 39, 65, 20);
+		contentPane.add(txtMaxTemp);
+		
+		JLabel lblMaxRecorde = new JLabel("Quebra de recode maximo");
+		lblMaxRecorde.setBounds(276, 73, 155, 14);
+		contentPane.add(lblMaxRecorde);
+		
+		txtMaxRecorde = new JTextField();
+		txtMaxRecorde.setColumns(10);
+		txtMaxRecorde.setBounds(432, 67, 65, 20);
+		contentPane.add(txtMaxRecorde);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(33, 108, 103, 23);
+		contentPane.add(btnNewButton);
+		
+		table = new JTable();
+		table.setBounds(20, 151, 486, 234);
+		contentPane.add(table);
+		
+		JButton btnNewButton_1 = new JButton("New button");
+		btnNewButton_1.setBounds(154, 108, 103, 23);
+		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_1_1 = new JButton("New button");
+		btnNewButton_1_1.setBounds(394, 108, 103, 23);
+		contentPane.add(btnNewButton_1_1);
+		
+		JButton btnNewButton_2 = new JButton("New button");
+		btnNewButton_2.setBounds(273, 108, 103, 23);
+		contentPane.add(btnNewButton_2);
+	}
+}

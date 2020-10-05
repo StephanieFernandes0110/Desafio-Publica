@@ -1,0 +1,153 @@
+package visao;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.border.EmptyBorder;
+
+import controle.Controle;
+import modelo.Jogo;
+import validar.ValidaCadastro;
+
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.JComboBox;
+import java.awt.Font;
+
+public class Formulario extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtPlacar;
+	private JTextField txtMinTemp;
+	private JTextField txtMinRecorde;
+	private JTextField txtMaxTemp;
+	private JTextField txtMaxRecorde;
+	private JTable table;
+
+	
+	
+	/**
+	 * Create the frame.
+	 */
+	public Formulario() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 545, 446);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblPlacar = new JLabel("Placar");
+		lblPlacar.setBounds(120, 14, 46, 14);
+		contentPane.add(lblPlacar);
+		
+		JLabel lblMinTemp = new JLabel("Minimo da temporada");
+		lblMinTemp.setBounds(33, 42, 132, 14);
+		contentPane.add(lblMinTemp);
+		
+		JLabel lblMinRecorde = new JLabel("Quebra de recode minimo");
+		lblMinRecorde.setBounds(10, 70, 155, 14);
+		contentPane.add(lblMinRecorde);
+		
+		JLabel lblMaxTemp = new JLabel("Maximo da temporada");
+		lblMaxTemp.setBounds(299, 45, 132, 14);
+		contentPane.add(lblMaxTemp);
+		
+		JLabel lblMaxRecorde = new JLabel("Quebra de recode maximo");
+		lblMaxRecorde.setBounds(276, 73, 155, 14);
+		contentPane.add(lblMaxRecorde);
+		
+		txtPlacar = new JTextField();
+		txtPlacar.setBounds(165, 11, 65, 20);
+		contentPane.add(txtPlacar);
+		txtPlacar.setColumns(10);
+		
+		txtMinRecorde = new JTextField();
+		txtMinRecorde.setColumns(10);
+		txtMinRecorde.setBounds(165, 67, 65, 20);
+		contentPane.add(txtMinRecorde);
+		
+		txtMinTemp = new JTextField();
+		txtMinTemp.setColumns(10);
+		txtMinTemp.setBounds(165, 39, 65, 20);
+		contentPane.add(txtMinTemp);
+		
+		txtMaxTemp = new JTextField();
+		txtMaxTemp.setColumns(10);
+		txtMaxTemp.setBounds(432, 39, 65, 20);
+		contentPane.add(txtMaxTemp);
+		
+		txtMaxRecorde = new JTextField();
+		txtMaxRecorde.setColumns(10);
+		txtMaxRecorde.setBounds(432, 67, 65, 20);
+		contentPane.add(txtMaxRecorde);
+
+		
+		JLabel lblRecordeQuebrado = new JLabel("");
+		lblRecordeQuebrado.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblRecordeQuebrado.setBounds(84, 369, 395, 16);
+		contentPane.add(lblRecordeQuebrado);
+	
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				// Obter os dados
+				int placar = Integer.parseInt(txtPlacar.getText());
+				int minTemporada = Integer.parseInt(txtMinTemp.getText());
+				int maxTemporada = Integer.parseInt(txtMaxTemp.getText());
+				int minRecorde = Integer.parseInt(txtMinRecorde.getText());
+				int maxRecorde = Integer.parseInt(txtMaxRecorde.getText());
+			
+				// Instanciar objeto do modelo Jogo
+				Jogo j = new Jogo(placar, minTemporada, maxTemporada, minRecorde, maxRecorde);
+				
+				// Validar jogo
+				ValidaCadastro vc = new ValidaCadastro(j);
+				boolean negativo = vc.valoresNegativos();
+				boolean menorMil = vc.valoresMaioresOuIguaisA1000();
+				
+				if(negativo == false || menorMil == false) {
+					JOptionPane.showMessageDialog(null, "Informações inválidas, favor revisar");
+				}else {
+				
+					// Efetuar o cadastro
+					Controle.cadastrar(j);
+					
+					// Atualizar a tabela
+					table.setModel(Controle.listar());
+					
+					// Exibir a quantidade de recordes quebrados
+					lblRecordeQuebrado.setText("A quantidade de recordes quebrados é " + Controle.recordesQuebrados());
+					
+					// Mensagem
+					JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
+				}
+			}
+		});
+		
+		btnCadastrar.setBounds(186, 109, 104, 23);
+		contentPane.add(btnCadastrar);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(16, 155, 503, 200);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		table.setModel(Controle.listar());
+		scrollPane.setViewportView(table);
+		
+		
+		
+		
+		
+	}
+}

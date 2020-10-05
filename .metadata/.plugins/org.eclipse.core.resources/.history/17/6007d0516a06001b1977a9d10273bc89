@@ -1,0 +1,19 @@
+package teste_unitario;
+
+import controle.Controle;
+import modelo.Jogo;
+
+class TesteControle {
+
+	@Test
+	@RepeatedTest(99)
+	void test() {
+		Jogo j1 = new Jogo(0, 0, 0, 0, 0);
+		
+		Controle.cadastrar(j1);
+
+		Controle.listar();
+		
+		Controle.recordesQuebrados();
+	}
+}

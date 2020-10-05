@@ -1,0 +1,77 @@
+package visao;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class Formulario extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	
+	/**
+	 * Create the frame.
+	 */
+	public Formulario() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 545, 449);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblPlacar = new JLabel("Placar");
+		lblPlacar.setBounds(110, 14, 46, 14);
+		contentPane.add(lblPlacar);
+		
+		textField = new JTextField();
+		textField.setBounds(166, 11, 65, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblMinimoDa = new JLabel("Minimo da temporada");
+		lblMinimoDa.setBounds(39, 42, 126, 14);
+		contentPane.add(lblMinimoDa);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(166, 39, 65, 20);
+		contentPane.add(textField_1);
+		
+		JLabel lblPlacar_1_1 = new JLabel("Quebra de recode minimo");
+		lblPlacar_1_1.setBounds(21, 70, 126, 14);
+		contentPane.add(lblPlacar_1_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(166, 67, 65, 20);
+		contentPane.add(textField_2);
+		
+		JLabel lblMinimoDa_1 = new JLabel("Minimo da temporada");
+		lblMinimoDa_1.setBounds(306, 42, 126, 14);
+		contentPane.add(lblMinimoDa_1);
+		
+		JLabel lblPlacar_1_1_1 = new JLabel("Quebra de recode minimo");
+		lblPlacar_1_1_1.setBounds(306, 70, 126, 14);
+		contentPane.add(lblPlacar_1_1_1);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(442, 70, 65, 20);
+		contentPane.add(textField_3);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(442, 42, 65, 20);
+		contentPane.add(textField_4);
+	}
+}
